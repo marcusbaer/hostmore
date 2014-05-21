@@ -1,7 +1,8 @@
 var url = require('url');
 var fs = require('fs');
+var argv = require('optimist').default('hosted', __dirname + '/hosted-sites').argv;
 
-var HOST_PATH = __dirname + '/hosted-sites';
+var HOST_PATH = argv.hosted;
 
 function siteExists (req, res, next) {
     var uri = url.parse('http://'+req.headers.host + req.url);
