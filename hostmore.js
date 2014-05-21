@@ -39,7 +39,8 @@ function deliverSite (req, res, next) {
             res.end();
             return;
         }
-        var mimeType = mimeTypes[filename.split(".")[1]];
+        var parts = filename.split(".");
+        var mimeType = mimeTypes[parts[parts.length-1]];
         res.writeHead(200, {'Content-Type': mimeType} );
         var fileStream = fs.createReadStream(filename);
         fileStream.pipe(res);
